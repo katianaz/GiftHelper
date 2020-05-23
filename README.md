@@ -1,2 +1,2 @@
 # GiftHelper
-Arquivo do projeto GiftHelper - TechLabs
+Arquivos do projeto GiftHelper - TechLabs
