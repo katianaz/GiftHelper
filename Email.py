@@ -1,14 +1,11 @@
 import smtplib, ssl
 import pandas as pd
 
-df_respostas = pd.read_csv('respostas.csv', encoding='ISO-8859-1')
-df_respostas
-
 sender_email = "gifthelper.cwb@gmail.com"
 password = input("Type your password and press enter: ")
 
 # data handling
-df_respostas = pd.read_csv('respostas.csv', encoding='ISO-8859-1')
+df_respostas = pd.read_csv('respostas.csv', encoding='utf-8"')
 
 # Create a secure SSL context
 port = 465  # For SSL
