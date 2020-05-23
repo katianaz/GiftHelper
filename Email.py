@@ -1,29 +1,23 @@
 import smtplib, ssl
+import pandas as pd
+
+df_respostas = pd.read_csv('respostas.csv', encoding='ISO-8859-1')
+df_respostas
 
 sender_email = "gifthelper.cwb@gmail.com"
-receiver_email = "gifthelper.cwb@gmail.com"
-password =  input("Type your password and press enter: ")
+password = input("Type your password and press enter: ")
 
-port = 465  # For SSL
-
-message = """\
-Subject: Lista de Presentes GiftHelper
-
-Hey, NOME! Como vai?
-
-Você acaba de receber a lista de sugestões para presentes do GiftHelper! 
-Agradecemos a confiança e com certeza você dará o presente ideal.
-
-
-Att,
-Equipe GitHelper
-
-"""
-
+# data handling
+df_respostas = pd.read_csv('respostas.csv', encoding='ISO-8859-1')
 
 # Create a secure SSL context
+port = 465  # For SSL
 context = ssl.create_default_context()
 
 with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
     server.login(sender_email, password)
-    server.sendmail(sender_email, receiver_email, message)
+    for i in range(0,len(df_respostas)):
+        message = "Subject: Presente!\n\n" + "Hey " + df_respostas['Nome'][i] + "! Como vai?\nVocê acaba de receber a lista de sugestões para presentes do GiftHelper!\nAgradecemos a confiança e com certeza " + df_respostas['Presenteado'][i] + " vai curtir muito o presente. Segue a lista de sugestões que preparamos para você:\n" + df_respostas['Sugestoes de presente'][i]
+        message=message.encode('utf-8')
+        server.sendmail(sender_email, df_respostas['Email'][i], message)
+        
