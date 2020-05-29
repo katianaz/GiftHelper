@@ -1,7 +1,6 @@
 import smtplib
 import ssl
 import pandas as pd
-import informacoes_emails
 
 sender_email = "gifthelper.cwb@gmail.com"
 password = input("Type your password and press enter: ")
