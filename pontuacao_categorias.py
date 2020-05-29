@@ -505,11 +505,11 @@ for j in range(0, len(tabela.index)):
 
     sugestoes.append(sugestoes_finais)
 
-    print('Oi {}! Os presentes que {} vai amar são: \n'.format(tabela['3'][j], tabela['4'][j]))
+    """print('Oi {}! Os presentes que {} vai amar são: \n'.format(tabela['3'][j], tabela['4'][j]))
     
     cont = 0
     for i in sugestoes_finais:
         cont += 1
         print('{}. {}'.format(cont, i))
     
-    print('===========')
+    print('===========')"""
